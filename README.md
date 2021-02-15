@@ -12,6 +12,7 @@ Password Manager created with Python.
     - [For release version](#for-release-version)
   - [To install PyPassMan](#to-install-pypassman)
   - [To uninstall PyPassMan](#to-uninstall-pypassman)
+  - [Manual uninstall](#manual-uninstall)
 - [Functionalities](#functionalities)
 - [Progress status and Known issues](#progress-status-and-known-issues)
 - [How it works](#how-it-works)
@@ -42,14 +43,18 @@ All of the dependecies can be found in the **requirements.txt** file found in ev
 * double click PyPassMan.exe
 
 ### To install PyPassMan:
-* double click the installer executable
+* right click the installer executable and click run as administrator
 * select a location to install to
 * click next and install
 
 ### To uninstall PyPassMan:
-* double click the installer executable
+* right click the installer executable and click run as administrator
 * select the location to uninstall from
 * click uninstall (if there are any error refer to [Manual Uninstall](#manual-uninstall))
+
+### Manual uninstall:
+* Delete the folder you installed PyPassMan to
+* Delete the shortcut from the desktop and the one from startmenu and thats all
 
 ## Functionalities
 - Operations on Accounts Folders: Create Accounts Folders, List Accounts Folders, Remove Accounts Folder
