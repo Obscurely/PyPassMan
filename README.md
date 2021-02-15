@@ -16,6 +16,7 @@ Password Manager created with Python.
 - [Progress status and Known issues](#progress-status-and-known-issues)
 - [How it works](#how-it-works)
 - [If you want to use my work](#if-you-want-to-use-my-work)
+- [Screenshots](#screenshots)
 - [Other notes](#other-notes)
 
 ## General info
@@ -66,6 +67,10 @@ The app uses **.json files** to store all the needed data (PyPassMan accounts as
 
 ## If you want to use my work
 Just stick to the **license conditions**: Your program has to be **open-source**, **credit me**, use the **same license** and **state any changes**.
+
+## Screenshots
+![Login Window](https://github.com/Obscurely/PyPassMan/blob/master/screenshots/Login%20into%20account%20window.png)
+![Locker Window](https://github.com/Obscurely/PyPassMan/blob/master/screenshots/Locker%20window.png)
 
 ## Other notes:
 * If you have any issues post them and in the issues tab using this format: *the app version you are using*, *the python version you are using*, *what kind of release you use*, *how you run it on your system python/release/installed*, *the issue/s*, *what you did before that happen*, *other notes you think are useful*. I will try to fix them as soon as I can and have time to
