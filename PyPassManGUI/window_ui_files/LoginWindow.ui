@@ -49,6 +49,9 @@
     <property name="text">
      <string>Login</string>
     </property>
+    <property name="shortcut">
+     <string>1</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="bRegister">
     <property name="geometry">
@@ -68,6 +71,9 @@
     </property>
     <property name="text">
      <string>Register</string>
+    </property>
+    <property name="shortcut">
+     <string>2</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bRemoveAccount">
@@ -89,6 +95,9 @@
     <property name="text">
      <string>Remove
 Account</string>
+    </property>
+    <property name="shortcut">
+     <string>3</string>
     </property>
    </widget>
   </widget>

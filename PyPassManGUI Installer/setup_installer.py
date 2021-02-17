@@ -139,6 +139,9 @@ def uninstall(directory):
     except:
         return 'not a directory'
 
+    if install_folder_name not in os.listdir():
+        return 'not a directory'
+
     os.chmod(del_dir, stat.S_IWRITE)
 
     try:

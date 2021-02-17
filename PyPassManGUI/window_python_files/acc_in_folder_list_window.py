@@ -68,3 +68,4 @@ class Ui_AccInFolderListWindow(object):
         AccInFolderListWindow.setWindowTitle(_translate("AccInFolderListWindow", "Acc In Folder List"))
         self.FolderNameLabel.setText(_translate("AccInFolderListWindow", "Folder To List:"))
         self.bListAccounts.setText(_translate("AccInFolderListWindow", "List Accounts"))
+        self.bListAccounts.setShortcut(_translate("AccInFolderListWindow", "Return"))

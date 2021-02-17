@@ -13,13 +13,6 @@ class Ui_LoginWindow(object):
     def setupUi(self, LoginWindow):
         LoginWindow.setObjectName("LoginWindow")
         LoginWindow.resize(492, 118)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setStyleStrategy(QtGui.QFont.StyleStrategy.PreferAntialias)
-        LoginWindow.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("F:/Downloads/SSH-Keys.ico"))
-        LoginWindow.setWindowIcon(icon)
         LoginWindow.setAutoFillBackground(False)
         self.centralwidget = QtWidgets.QWidget(LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -66,6 +59,9 @@ class Ui_LoginWindow(object):
         _translate = QtCore.QCoreApplication.translate
         LoginWindow.setWindowTitle(_translate("LoginWindow", "Login Window"))
         self.bLogin.setText(_translate("LoginWindow", "Login"))
+        self.bLogin.setShortcut(_translate("LoginWindow", "1"))
         self.bRegister.setText(_translate("LoginWindow", "Register"))
+        self.bRegister.setShortcut(_translate("LoginWindow", "2"))
         self.bRemoveAccount.setText(_translate("LoginWindow", "Remove\n"
 "Account"))
+        self.bRemoveAccount.setShortcut(_translate("LoginWindow", "3"))

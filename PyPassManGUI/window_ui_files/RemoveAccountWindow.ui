@@ -167,6 +167,9 @@
      <string>Remove 
 Account</string>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
    </widget>
    <widget class="Line" name="line_2">
     <property name="geometry">

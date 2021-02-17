@@ -56,4 +56,5 @@ class Ui_ClearAccInFolderWindow(object):
         _translate = QtCore.QCoreApplication.translate
         ClearAccInFolderWindow.setWindowTitle(_translate("ClearAccInFolderWindow", "Clear Acc In Folder"))
         self.bClearAccInFolder.setText(_translate("ClearAccInFolderWindow", "Clear Acc In Folder"))
+        self.bClearAccInFolder.setShortcut(_translate("ClearAccInFolderWindow", "Return"))
         self.FolderNameLabel.setText(_translate("ClearAccInFolderWindow", "Folder Name:"))

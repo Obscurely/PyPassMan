@@ -86,6 +86,7 @@ class Ui_RemoveAccInFolderWindow(object):
         _translate = QtCore.QCoreApplication.translate
         RemoveAccInFolderWindow.setWindowTitle(_translate("RemoveAccInFolderWindow", "Remove Acc In Folder"))
         self.bRemoveAccInFolder.setText(_translate("RemoveAccInFolderWindow", "Remove Acc In Folder"))
+        self.bRemoveAccInFolder.setShortcut(_translate("RemoveAccInFolderWindow", "Return"))
         self.FolderNameLabel.setText(_translate("RemoveAccInFolderWindow", "Folder Name:"))
         self.NumberLabel.setText(_translate("RemoveAccInFolderWindow", "Number:"))
         self.AccUsernameLabel.setText(_translate("RemoveAccInFolderWindow", "Username:"))

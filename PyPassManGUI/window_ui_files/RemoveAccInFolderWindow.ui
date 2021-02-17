@@ -53,6 +53,9 @@
     <property name="text">
      <string>Remove Acc In Folder</string>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
    </widget>
    <widget class="QLabel" name="FolderNameLabel">
     <property name="geometry">

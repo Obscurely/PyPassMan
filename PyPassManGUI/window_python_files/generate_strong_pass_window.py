@@ -68,5 +68,6 @@ class Ui_GenerateStrongPassWindow(object):
         _translate = QtCore.QCoreApplication.translate
         GenerateStrongPassWindow.setWindowTitle(_translate("GenerateStrongPassWindow", "Generate Strong Password"))
         self.bGenerateStrongPass.setText(_translate("GenerateStrongPassWindow", "Generate Strong Pass"))
+        self.bGenerateStrongPass.setShortcut(_translate("GenerateStrongPassWindow", "Return"))
         self.NumberOfCharsLabel.setText(_translate("GenerateStrongPassWindow", "Number of Chars:"))
         self.OutputLabel.setText(_translate("GenerateStrongPassWindow", "Output:"))

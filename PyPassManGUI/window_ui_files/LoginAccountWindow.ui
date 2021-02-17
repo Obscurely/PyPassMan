@@ -150,6 +150,9 @@
     <property name="text">
      <string>Login</string>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

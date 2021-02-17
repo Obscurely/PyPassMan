@@ -53,6 +53,9 @@
     <property name="text">
      <string>Generate Strong Pass</string>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
    </widget>
    <widget class="QLabel" name="NumberOfCharsLabel">
     <property name="geometry">

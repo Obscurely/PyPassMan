@@ -48,3 +48,4 @@ class Ui_CreateAccFolderWindow(object):
         _translate = QtCore.QCoreApplication.translate
         CreateAccFolderWindow.setWindowTitle(_translate("CreateAccFolderWindow", "Create Acc Folder"))
         self.bCreateAccFolder.setText(_translate("CreateAccFolderWindow", "Create Acc Folder"))
+        self.bCreateAccFolder.setShortcut(_translate("CreateAccFolderWindow", "Return"))

@@ -165,7 +165,7 @@ def get_acc_in_folder(user, folder):
     os.chdir(current_dir + user_accounts_dir)
 
     file_name = folder + user + file_extension
-    if file_name not in str(os.listdir()):
+    if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
         return 'folder not found'
     elif file_name in str(os.listdir()):
@@ -200,7 +200,7 @@ def remove_acc_in_folder(user, folder, number, account):
 
     file_name = folder + user + file_extension
 
-    if file_name not in str(os.listdir()):
+    if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
         return 'folder not found'
     elif file_name in str(os.listdir()):
@@ -245,7 +245,7 @@ def clear_acc_folder(user, folder):
     os.chdir(current_dir + user_accounts_dir)
 
     file_name = folder + user + file_extension
-    if file_name not in str(os.listdir()):
+    if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
         return 'folder not found'
     elif file_name in str(os.listdir()):

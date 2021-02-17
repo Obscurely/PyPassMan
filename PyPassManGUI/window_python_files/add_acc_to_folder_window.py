@@ -119,6 +119,7 @@ class Ui_AddAccToFolderWindow(object):
         _translate = QtCore.QCoreApplication.translate
         AddAccToFolderWindow.setWindowTitle(_translate("AddAccToFolderWindow", "Add Acc To Folder"))
         self.bAddAccToFolder.setText(_translate("AddAccToFolderWindow", "Add Acc To Folder"))
+        self.bAddAccToFolder.setShortcut(_translate("AddAccToFolderWindow", "Return"))
         self.FolderNameLabel.setText(_translate("AddAccToFolderWindow", "Folder Name:"))
         self.AccUsernameLabel.setText(_translate("AddAccToFolderWindow", "Username:"))
         self.PasswordLabel.setText(_translate("AddAccToFolderWindow", "Password:"))

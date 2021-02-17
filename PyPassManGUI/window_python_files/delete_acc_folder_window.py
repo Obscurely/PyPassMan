@@ -48,3 +48,4 @@ class Ui_DeleteAccFolderWindow(object):
         _translate = QtCore.QCoreApplication.translate
         DeleteAccFolderWindow.setWindowTitle(_translate("DeleteAccFolderWindow", "Delete Acc Folder"))
         self.bDeleteAccFolder.setText(_translate("DeleteAccFolderWindow", "Delete Acc Folder"))
+        self.bDeleteAccFolder.setShortcut(_translate("DeleteAccFolderWindow", "Return"))
