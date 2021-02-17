@@ -1,5 +1,5 @@
 # PyPassMan - password manager app
-[![Current Version](https://img.shields.io/badge/version-0.0.1-green.svg)](https://github.com/Obscurely/PyPassMan)<br />
+[![Current Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/Obscurely/PyPassMan)<br />
 Password Manager created with Python.
 
 ## Table of contents
