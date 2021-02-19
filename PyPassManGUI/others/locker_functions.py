@@ -55,8 +55,13 @@ def delete_acc_folder(username):
     delete_acc_folder_form = window_init.DeleteAccFolderWindow()
     delete_acc_folder_form.show()
 
+    folder_list = accounts.get_acc_folders(username).split('/    ')
+    for folder in folder_list:
+        if folder != '':
+            delete_acc_folder_form.cbFolders.addItem(folder)
+
     def validate_deletion():
-        folder_name = delete_acc_folder_form.FolderNameInput.text()
+        folder_name = delete_acc_folder_form.cbFolders.currentText()
         response = accounts.remove_acc_folder(username, folder_name)
 
         if response == folder_not_found_error:
@@ -72,6 +77,12 @@ def delete_acc_folder(username):
             error.setText(unknown_error)
             error.exec()
 
+        delete_acc_folder_form.cbFolders.clear()
+        new_folder_list = accounts.get_acc_folders(username).split('/    ')
+        for new_folder in new_folder_list:
+            if new_folder != '':
+                delete_acc_folder_form.cbFolders.addItem(new_folder)
+
     delete_acc_folder_form.bDeleteAccFolder.clicked.connect(validate_deletion)
 
 
@@ -79,14 +90,23 @@ def add_acc_to_folder(username):
     add_acc_to_folder_form = window_init.AddAccToFolderWindow()
     add_acc_to_folder_form.show()
 
+    folder_list = accounts.get_acc_folders(username).split('/    ')
+    for folder in folder_list:
+        if folder != '':
+            add_acc_to_folder_form.cbFolders.addItem(folder)
+
     def validate_acc_add():
-        folder_name = add_acc_to_folder_form.FolderNameInput.text()
+        folder_name = add_acc_to_folder_form.cbFolders.currentText()
         label = add_acc_to_folder_form.LabelInput.text()
         acc_username = add_acc_to_folder_form.UsernameInput.text()
         password = add_acc_to_folder_form.PasswordInput.text()
         password_again = add_acc_to_folder_form.PasswordAgainInput.text()
 
-        if password == password_again:
+        if 'username: ' in acc_username:
+            error = QMessageBox()
+            error.setText('Username can not contain "username: " in it!')
+            error.exec()
+        elif password == password_again:
             if label == '':
                 label = '0'
                 response = accounts.add_acc_to_folder(username, label, folder_name, acc_username, password)
@@ -126,8 +146,13 @@ def list_acc_in_folder(username):
     acc_in_folder_list_form = window_init.AccInFolderListWindow()
     acc_in_folder_list_form.show()
 
+    folder_list = accounts.get_acc_folders(username).split('/    ')
+    for folder in folder_list:
+        if folder != '':
+            acc_in_folder_list_form.cbFolders.addItem(folder)
+
     def validate_list_acc():
-        folder_name = acc_in_folder_list_form.FolderNameInput.text()
+        folder_name = acc_in_folder_list_form.cbFolders.currentText()
 
         response = accounts.get_acc_in_folder(username, folder_name)
 
@@ -149,10 +174,32 @@ def remove_acc_in_folder(username):
     remove_acc_in_folder_form = window_init.RemoveAccInFolderWindow()
     remove_acc_in_folder_form.show()
 
+    folder_list = accounts.get_acc_folders(username).split('/    ')
+    for folder in folder_list:
+        if folder != '':
+            remove_acc_in_folder_form.cbFolders.addItem(folder)
+
+    def get_acc_in_folder():
+        remove_acc_in_folder_form.cbAccounts.clear()
+        account = ''
+        folder_name = remove_acc_in_folder_form.cbFolders.currentText()
+        accounts_list = accounts.get_acc_in_folder(username, folder_name).split('\n\n')
+        for account_item in accounts_list:
+            if account_item != '':
+                account_item = account_item.split('\n')
+                for account_part in account_item:
+                    if 'password: ' not in account_part and 'username: ' not in account_part:
+                        account += account_part + ' '
+                    elif 'password: ' not in account_part:
+                        account += account_part
+            if account != '':
+                remove_acc_in_folder_form.cbAccounts.addItem(account)
+            account = ''
+
     def validate_remove_acc():
-        folder_name = remove_acc_in_folder_form.FolderNameInput.text()
-        acc_username = remove_acc_in_folder_form.UsernameInput.text()
-        acc_number = remove_acc_in_folder_form.NumberInput.text()
+        folder_name = remove_acc_in_folder_form.cbFolders.currentText()
+        acc_number = remove_acc_in_folder_form.cbAccounts.currentText().split('.')[0]
+        acc_username = remove_acc_in_folder_form.cbAccounts.currentText().split('username: ')[-1]
 
         response = accounts.remove_acc_in_folder(username, folder_name, acc_number, acc_username)
         if response == folder_not_found_error:
@@ -172,6 +219,9 @@ def remove_acc_in_folder(username):
             error.setText(unknown_error)
             error.exec()
 
+        get_acc_in_folder()
+
+    remove_acc_in_folder_form.bGetAcc.clicked.connect(get_acc_in_folder)
     remove_acc_in_folder_form.bRemoveAccInFolder.clicked.connect(validate_remove_acc)
 
 
@@ -179,8 +229,13 @@ def clear_acc_in_folder(username):
     clear_acc_in_folder_form = window_init.ClearAccInFolderWindow()
     clear_acc_in_folder_form.show()
 
+    folder_list = accounts.get_acc_folders(username).split('/    ')
+    for folder in folder_list:
+        if folder != '':
+            clear_acc_in_folder_form.cbFolders.addItem(folder)
+
     def validate_clear_acc():
-        folder_name = clear_acc_in_folder_form.FolderNameInput.text()
+        folder_name = clear_acc_in_folder_form.cbFolders.currentText()
 
         response = accounts.clear_acc_folder(username, folder_name)
         if response == folder_not_found_error:

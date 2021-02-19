@@ -62,22 +62,6 @@
      <string>Folder To List:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="FolderNameInput">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>0</y>
-      <width>531</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-   </widget>
    <widget class="QPushButton" name="bListAccounts">
     <property name="geometry">
      <rect>
@@ -99,6 +83,16 @@
     </property>
     <property name="shortcut">
      <string>Return</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbFolders">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>0</y>
+      <width>531</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>
