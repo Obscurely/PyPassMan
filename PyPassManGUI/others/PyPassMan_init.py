@@ -1,3 +1,5 @@
+import re
+import requests
 from others import locker_functions
 from others import accounts
 from others import window_init
@@ -5,6 +7,22 @@ from PyQt6.QtWidgets import QMessageBox
 
 # error vars
 unknown_error = 'An unknown error occurred. Close the app and try again!'
+
+
+def check_version():
+    content = requests.get('https://pastebin.com/f077vm8L').text
+    pattern = re.compile(r'(?<=-=-=&gt;&gt;).*?(?=&lt;=-=-)')
+    latest_version = pattern.findall(content)[0]
+
+    with open('version.txt', 'r') as f:
+        current_version = f.read()
+
+    if latest_version != current_version:
+        error = QMessageBox()
+        error.setText('There is an update available, version: ' + latest_version + '\n'
+                      + 'You can download it with the installer or from github and you can read patch notes at:\n'
+                      + 'https://github.com/Obscurely/PyPassMan/releases')
+        error.exec()
 
 
 def register():
