@@ -3,6 +3,7 @@ import os
 import random
 import string
 import re
+import shutil
 from others import crypter
 
 # Vars related to files
@@ -20,6 +21,7 @@ unknown_error = 'unknown error occurred'
 
 
 def register_acc(username, password):
+    current_dir = os.getcwd()
     with open(program_accounts_dir, 'r') as f:
         accounts = json.load(f)
 
@@ -32,6 +34,10 @@ def register_acc(username, password):
 
         with open(program_accounts_dir, 'w') as f:
             json.dump(accounts, f, indent=4)
+
+        os.chdir(current_dir + user_accounts_dir)
+        os.mkdir(username)
+        os.chdir(current_dir)
 
         return 'created account'
 
@@ -63,10 +69,7 @@ def remove_acc(username, password):
             json.dump(accounts, f, indent=4)
 
         os.chdir(current_dir + user_accounts_dir)
-        dir_files = os.listdir()
-        for each_file in dir_files:
-            if username in each_file:
-                os.remove(each_file)
+        shutil.rmtree(username)
         os.chdir(current_dir)
 
         return 'account deleted'
@@ -74,7 +77,7 @@ def remove_acc(username, password):
 
 def create_acc_folder(user, folder_name):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
 
     if folder_name == '':
         os.chdir(current_dir)
@@ -93,7 +96,7 @@ def create_acc_folder(user, folder_name):
 
 def get_acc_folders(user):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
     all_acc_folder = os.listdir()
 
     folder_list = ''
@@ -109,7 +112,7 @@ def get_acc_folders(user):
 
 def remove_acc_folder(user, folder):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
 
     file_name = folder + user + file_extension
 
@@ -136,7 +139,7 @@ def add_acc_to_folder(user, label, folder, acc_username, acc_password):
             return acc_digit
 
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
 
     file_name = folder + user + file_extension
 
@@ -173,7 +176,7 @@ def add_acc_to_folder(user, label, folder, acc_username, acc_password):
 
 def get_acc_in_folder(user, folder):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
 
     file_name = folder + user + file_extension
     if file_name not in str(os.listdir()) or file_name == user + file_extension:
@@ -207,7 +210,7 @@ def get_acc_in_folder(user, folder):
 
 def remove_acc_in_folder(user, folder, number, account):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
 
     file_name = folder + user + file_extension
 
@@ -253,7 +256,7 @@ def remove_acc_in_folder(user, folder, number, account):
 
 def clear_acc_folder(user, folder):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
 
     file_name = folder + user + file_extension
     if file_name not in str(os.listdir()) or file_name == user + file_extension:
@@ -300,7 +303,7 @@ def pass_gen(length):
 def backup(user):
     desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + user)
     all_acc_folder = os.listdir()
 
     folder_list = []
@@ -358,7 +361,7 @@ def restore(username):
     except FileNotFoundError:
         return 'desktop no backup.txt'
 
-    os.chdir(current_dir + user_accounts_dir)
+    os.chdir(current_dir + user_accounts_dir + '\\' + username)
 
     dir_files = os.listdir()
     for each_file in dir_files:
