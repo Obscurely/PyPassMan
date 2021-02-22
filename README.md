@@ -68,7 +68,7 @@ All of the dependecies can be found in the **requirements.txt** file found in ev
 Go to Projects Tab under **PyPassMan Progress Board**
 
 ## How it works
-The app uses **.json files** to store all the needed data (PyPassMan accounts aswell as accounts folders and accounts in them). They are **encrypted** using **AES 256 bits encryption** using EAX mode, encryption keys are generate when user first runs the apps and each PyPassMan acc when created gets it's own unique encrytpion keys. It runs completely **offline** so no worries your data is **safe**.
+The app uses **.json files** to store all the needed data (PyPassMan accounts aswell as accounts folders and accounts in them). They are **encrypted** using **AES 256 bits encryption** using EAX mode, encryption keys for the app itself are generated when user first runs the app and each PyPassMan acc when created gets it's own unique encrytpion keys too. It runs completely **offline** so no worries your data is **safe**.
 
 ## If you want to use my work
 Just stick to the **license conditions**: Your program has to be **open-source**, **credit me**, use the **same license** and **state any changes**.
