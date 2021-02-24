@@ -25,7 +25,7 @@ This is an open-source cross-platform local password manager (runs by creating e
 
 ## Technologies
 Project is created with:
-* Python 3.9.1
+* Python 3.9.2
 * Qt Designer 6.0.0
 
 ## Program dependencies
