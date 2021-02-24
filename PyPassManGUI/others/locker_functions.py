@@ -8,6 +8,16 @@ folder_not_found_error = 'folder not found'
 print_folder_not_found_error = 'Folder not found!'
 banned_chars = 'banned chars in text'
 banned_chars_error = 'A file name can\'t contain any of the following characters:\n\t\t\\ / : * ? " < > |'
+app_acc_dir_not_found_error = 'PyPassMan accounts dir does not exist'
+user_acc_dir_not_found_error = 'user accounts dir does not exist'
+user_acc_folder_not_found_error = 'user acc folder does not exist'
+app_dir_error = 'The directory with the accounts for the app was not found!' \
+                ' If after a restart it does not work reinstalling the application' \
+                ' might be the only solution.'
+user_acc_dir_error = 'The user acc directory was not found! This means that there is no data ' \
+                     'about any accounts! Reinstalling the program might be the only solution.'
+user_acc_folder_error = 'The folder with this user data was not found! Removing and adding back ' \
+                        'the account might be the only to fix this.'
 
 
 def create_acc_folder(username):
@@ -40,10 +50,16 @@ def create_acc_folder(username):
             error.setText(banned_chars_error)
             error.exec()
             create_acc_folder_form.FolderNameInput.clear()
+        elif response == user_acc_dir_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(user_acc_dir_error)
+            error.exec()
         else:
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            create_acc_folder_form.close()
             error.exec()
 
     create_acc_folder_form.bCreateAccFolder.clicked.connect(validate_creation)
@@ -57,6 +73,11 @@ def list_acc_folders(username):
         folder_list = accounts.get_acc_folders(username)
         if folder_list != '':
             acc_folders_list_form.AccFolderListText.setPlainText(folder_list)
+        elif folder_list == user_acc_folder_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(user_acc_folder_error)
+            error.exec()
         else:
             acc_folders_list_form.AccFolderListText.setPlainText('You don\'t have any account folders.')
     get_folders()
@@ -87,10 +108,16 @@ def delete_acc_folder(username):
             deleted.setWindowTitle('Success')
             deleted.setText('Acc Folder with name ' + folder_name + ' was successfully deleted!')
             deleted.exec()
+        elif response == user_acc_folder_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(user_acc_folder_error)
+            error.exec()
         else:
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            delete_acc_folder_form.close()
             error.exec()
 
         delete_acc_folder_form.cbFolders.clear()
@@ -150,10 +177,16 @@ def add_acc_to_folder(username):
                 error.setWindowTitle('Error')
                 error.setText('Folder name can\'t be empty!')
                 error.exec()
+            elif response == user_acc_folder_not_found_error:
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText(user_acc_folder_error)
+                error.exec()
             else:
                 error = QMessageBox()
                 error.setWindowTitle('Error')
                 error.setText(unknown_error)
+                add_acc_to_folder_form.close()
                 error.exec()
         elif password != password_again:
             error = QMessageBox()
@@ -166,6 +199,7 @@ def add_acc_to_folder(username):
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            add_acc_to_folder_form.close()
             error.exec()
 
     add_acc_to_folder_form.bAddAccToFolder.clicked.connect(validate_acc_add)
@@ -190,12 +224,18 @@ def list_acc_in_folder(username):
             error.setWindowTitle('Error')
             error.setText(print_folder_not_found_error)
             error.exec()
+        elif response == user_acc_folder_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(user_acc_folder_error)
+            error.exec()
         elif isinstance(response, str):
             acc_in_folder_list_form.AccInFolderListText.setPlainText(response)
         else:
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            acc_in_folder_list_form.close()
             error.exec()
 
     acc_in_folder_list_form.bListAccounts.clicked.connect(validate_list_acc)
@@ -214,7 +254,15 @@ def remove_acc_in_folder(username):
         remove_acc_in_folder_form.cbAccounts.clear()
         account = ''
         folder_name = remove_acc_in_folder_form.cbFolders.currentText()
-        accounts_list = accounts.get_acc_in_folder(username, folder_name).split('\n\n')
+        accounts_list = accounts.get_acc_in_folder(username, folder_name)
+        if accounts_list == user_acc_folder_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(user_acc_folder_error)
+            error.exec()
+            return 'user acc folder not found'
+        else:
+            accounts_list = accounts_list.split('\n\n')
         for account_item in accounts_list:
             if account_item != '':
                 account_item = account_item.split('\n')
@@ -252,6 +300,7 @@ def remove_acc_in_folder(username):
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            remove_acc_in_folder_form.close()
             error.exec()
 
         get_acc_in_folder()
@@ -283,10 +332,16 @@ def clear_acc_in_folder(username):
             cleared_acc.setWindowTitle('Success')
             cleared_acc.setText('Accounts folder successfully cleared!')
             cleared_acc.exec()
+        elif response == user_acc_folder_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(user_acc_folder_error)
+            error.exec()
         else:
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            clear_acc_in_folder_form.close()
             error.exec()
 
     clear_acc_in_folder_form.bClearAccInFolder.clicked.connect(validate_clear_acc)
@@ -312,6 +367,7 @@ def generate_strong_pass():
             error = QMessageBox()
             error.setWindowTitle('Error')
             error.setText(unknown_error)
+            generate_strong_pass_form.close()
             error.exec()
 
     generate_strong_pass_form.bGenerateStrongPass.clicked.connect(generate)
@@ -320,10 +376,16 @@ def generate_strong_pass():
 def backup_acc(username):
     accounts.backup(username)
 
-    backup = QMessageBox()
-    backup.setWindowTitle('Success')
-    backup.setText('Successfully backed up the accounts to backup.txt (on desktop)')
-    backup.exec()
+    if accounts == user_acc_folder_not_found_error:
+        error = QMessageBox()
+        error.setWindowTitle('Error')
+        error.setText(user_acc_folder_error)
+        error.exec()
+    else:
+        backup = QMessageBox()
+        backup.setWindowTitle('Success')
+        backup.setText('Successfully backed up the accounts to backup.txt (on desktop)')
+        backup.exec()
 
 
 def restore_acc(username):
@@ -332,6 +394,11 @@ def restore_acc(username):
         error = QMessageBox()
         error.setWindowTitle('Error')
         error.setText('There is no ' + username + 'backup.txt file on the desktop')
+        error.exec()
+    elif response == user_acc_folder_not_found_error:
+        error = QMessageBox()
+        error.setWindowTitle('Error')
+        error.setText(user_acc_folder_error)
         error.exec()
     else:
         restored = QMessageBox()

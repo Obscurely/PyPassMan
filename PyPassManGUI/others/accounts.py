@@ -6,19 +6,22 @@ import re
 import shutil
 from others import aes
 
-# Vars related to files
+# Files directories and extensions
 program_accounts_dir = 'PyPassMan_Files\\accounts.json'
 user_accounts_dir = '\\user_accounts'
 file_extension = '.json'
 
-# separator vars
-digit_separator = './//|||///'
-label_separator = '///\\'
+# Text separator vars (used when storing and reading json files)
+digit_separator = '///!@#$%^&*()\\\\\\'
+label_separator = '\\\\\\)(*&^%$#@!///'
 
-# error vars
-folder_not_found = 'folder not found'
+# Most used errors
+folder_not_found_error = 'folder not found'
 unknown_error = 'unknown error occurred'
 banned_chars_error = 'banned chars in text'
+app_acc_dir_not_found_error = 'PyPassMan accounts dir does not exist'
+user_acc_dir_not_found_error = 'user accounts dir does not exist'
+user_acc_folder_not_found_error = 'user acc folder does not exist'
 
 
 def check_chars(text):
@@ -31,8 +34,11 @@ def check_chars(text):
 
 def register_acc(username, password):
     current_dir = os.getcwd()
-    with open(program_accounts_dir, 'r') as f:
-        accounts = json.load(f)
+    try:
+        with open(program_accounts_dir, 'r') as f:
+            accounts = json.load(f)
+    except FileNotFoundError:
+        return app_acc_dir_not_found_error
 
     if aes.encrypt(username) in accounts:
         return 'username exists'
@@ -46,8 +52,14 @@ def register_acc(username, password):
         with open(program_accounts_dir, 'w', encoding='utf8') as f:
             json.dump(accounts, f, indent=4)
 
-        os.chdir(current_dir + user_accounts_dir)
-        os.mkdir(username)
+        try:
+            os.chdir(current_dir + user_accounts_dir)
+        except NotADirectoryError:
+            return user_acc_dir_not_found_error
+        try:
+            os.mkdir(username)
+        except FileExistsError:
+            return 'acc folder already exists'
         os.chdir(current_dir + user_accounts_dir + '\\' + username)
         aes.gen_keys()
         os.chdir(current_dir)
@@ -56,8 +68,11 @@ def register_acc(username, password):
 
 
 def login(username, password):
-    with open(program_accounts_dir, 'r') as f:
-        accounts = json.load(f)
+    try:
+        with open(program_accounts_dir, 'r') as f:
+            accounts = json.load(f)
+    except FileNotFoundError:
+        return app_acc_dir_not_found_error
 
     if aes.encrypt(username) in accounts:
         if accounts[aes.encrypt(username)] == aes.encrypt(password):
@@ -70,21 +85,30 @@ def login(username, password):
 
 def remove_acc(username, password):
     current_dir = os.getcwd()
-    with open(program_accounts_dir, 'r') as f:
-        accounts = json.load(f)
+    try:
+        with open(program_accounts_dir, 'r') as f:
+            accounts = json.load(f)
+    except FileNotFoundError:
+        return app_acc_dir_not_found_error
 
     if aes.encrypt(username) not in accounts:
         return 'account with this username not exist'
     elif accounts[aes.encrypt(username)] != aes.encrypt(password):
         return 'password incorrect'
-    else:
+    elif accounts[aes.encrypt(username)] == aes.encrypt(password):
         del accounts[aes.encrypt(username)]
 
         with open(program_accounts_dir, 'w') as f:
             json.dump(accounts, f, indent=4)
 
-        os.chdir(current_dir + user_accounts_dir)
-        shutil.rmtree(username)
+        try:
+            os.chdir(current_dir + user_accounts_dir)
+        except NotADirectoryError:
+            return user_acc_dir_not_found_error
+        try:
+            shutil.rmtree(username)
+        except FileNotFoundError:
+            return 'user folder was not found'
         os.chdir(current_dir)
 
         return 'account deleted'
@@ -92,7 +116,10 @@ def remove_acc(username, password):
 
 def create_acc_folder(user, folder_name):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_dir_not_found_error
 
     if folder_name == '':
         os.chdir(current_dir)
@@ -114,7 +141,11 @@ def create_acc_folder(user, folder_name):
 
 def get_acc_folders(user):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
+
     all_acc_folder = os.listdir()
 
     folder_list = ''
@@ -130,13 +161,16 @@ def get_acc_folders(user):
 
 def remove_acc_folder(user, folder):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
 
     file_name = folder + user + file_extension
 
     if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
-        return folder_not_found
+        return folder_not_found_error
     elif file_name in str(os.listdir()):
         os.remove(file_name)
         os.chdir(current_dir)
@@ -157,13 +191,16 @@ def add_acc_to_folder(user, label, folder, acc_username, acc_password):
             return acc_digit
 
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
 
     file_name = folder + user + file_extension
 
-    if file_name not in str(os.listdir()):
+    if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
-        return folder_not_found
+        return folder_not_found_error
     elif folder == '':
         os.chdir(current_dir)
         return 'folder name can not be empty'
@@ -194,12 +231,15 @@ def add_acc_to_folder(user, label, folder, acc_username, acc_password):
 
 def get_acc_in_folder(user, folder):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
 
     file_name = folder + user + file_extension
     if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
-        return folder_not_found
+        return folder_not_found_error
     elif file_name in str(os.listdir()):
         with open(file_name, 'r') as f:
             accounts = json.load(f)
@@ -228,13 +268,16 @@ def get_acc_in_folder(user, folder):
 
 def remove_acc_in_folder(user, folder, number, account):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
 
     file_name = folder + user + file_extension
 
     if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
-        return folder_not_found
+        return folder_not_found_error
     elif file_name in str(os.listdir()):
         with open(file_name, 'r') as f:
             accounts = json.load(f)
@@ -274,12 +317,15 @@ def remove_acc_in_folder(user, folder, number, account):
 
 def clear_acc_folder(user, folder):
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
 
     file_name = folder + user + file_extension
     if file_name not in str(os.listdir()) or file_name == user + file_extension:
         os.chdir(current_dir)
-        return folder_not_found
+        return folder_not_found_error
     elif file_name in str(os.listdir()):
         with open(file_name, 'w') as f:
             f.write('{}')
@@ -321,7 +367,10 @@ def pass_gen(length):
 def backup(user):
     desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
     current_dir = os.getcwd()
-    os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + user)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
     all_acc_folder = os.listdir()
 
     folder_list = []
@@ -375,11 +424,13 @@ def restore(username):
     try:
         with open(backup_file_name, 'r') as f:
             backup_file = f.read()
-
     except FileNotFoundError:
         return 'desktop no backup.txt'
 
-    os.chdir(current_dir + user_accounts_dir + '\\' + username)
+    try:
+        os.chdir(current_dir + user_accounts_dir + '\\' + username)
+    except NotADirectoryError:
+        return user_acc_folder_not_found_error
 
     dir_files = os.listdir()
     for each_file in dir_files:

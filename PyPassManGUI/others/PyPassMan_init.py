@@ -11,6 +11,14 @@ from PyQt6.QtWidgets import QMessageBox
 unknown_error = 'An unknown error occurred. Close the app and try again!'
 banned_chars = 'banned chars in text'
 banned_chars_error = 'Usernames can\'t contain any of the following characters:\n\t\t\\ / : * ? " < > |'
+app_acc_dir_not_found_error = 'PyPassMan accounts dir does not exist'
+user_acc_dir_not_found_error = 'user accounts dir does not exist'
+user_acc_folder_not_found_error = 'user acc folder does not exist'
+app_dir_error = 'The directory with the accounts for the app was not found!' \
+                ' If after a restart it does not work reinstalling the application' \
+                ' might be the only solution.'
+user_acc_dir_error = 'The user acc directory was not found! This means that there is no data ' \
+                     'about any accounts! Reinstalling the program might be the only solution.'
 
 # other vars
 config_file = 'config.json'
@@ -83,6 +91,23 @@ def register():
                 error.setText(banned_chars_error)
                 error.exec()
                 register_account_form.UsernameInput.clear()
+            elif response == app_acc_dir_not_found_error:
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText(app_dir_error)
+                error.exec()
+            elif response == user_acc_dir_not_found_error:
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText(user_acc_dir_error)
+                error.exec()
+            elif response == 'acc folder already exists':
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText('A folder with user is already present in the app! Any data this '
+                              'folder had was not changed, if you did not want this you can '
+                              'delete the acc and try recreate it.')
+                error.exec()
             else:
                 error = QMessageBox()
                 error.setWindowTitle('Error')
@@ -106,7 +131,7 @@ def register():
         else:
             error = QMessageBox()
             error.setWindowTitle('Error')
-            error.setText('An unknown error occurred! Restart app for safety!')
+            error.setText(unknown_error)
             error.exec()
             register_account_form.close()
 
@@ -142,6 +167,11 @@ def login():
             error.setText('Incorrect password!')
             error.exec()
             login_account_form.PasswordInput.clear()
+        elif response == app_acc_dir_not_found_error:
+            error = QMessageBox()
+            error.setWindowTitle('Error')
+            error.setText(app_dir_error)
+            error.exec()
         else:
             error = QMessageBox()
             error.setWindowTitle('Error')
@@ -183,6 +213,22 @@ def remove_acc():
                 error.exec()
                 remove_account_form.PasswordInput.clear()
                 remove_account_form.PasswordAgainInput.clear()
+            elif response == app_acc_dir_not_found_error:
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText(app_dir_error)
+                error.exec()
+            elif response == user_acc_dir_not_found_error:
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText(user_acc_dir_error)
+                error.exec()
+            elif response == 'user folder was not found':
+                error = QMessageBox()
+                error.setWindowTitle('Error')
+                error.setText('This user folder was not found, we just deleted it\'s metadata '
+                              'and everything should be fine in theory!')
+                error.exec()
             else:
                 error = QMessageBox()
                 error.setWindowTitle('Error')
