@@ -19,22 +19,6 @@
    <string>Add Acc To Folder</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="FolderNameInput">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>10</y>
-      <width>321</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-   </widget>
    <widget class="QPushButton" name="bAddAccToFolder">
     <property name="geometry">
      <rect>
@@ -228,6 +212,16 @@
       <family>Roboto</family>
       <pointsize>12</pointsize>
      </font>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbFolders">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>321</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>

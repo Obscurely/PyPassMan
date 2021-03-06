@@ -1,73 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AccInFolderListWindow</class>
- <widget class="QMainWindow" name="AccInFolderListWindow">
+ <class>ConfirmationWindow</class>
+ <widget class="QMainWindow" name="ConfirmationWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>358</height>
+    <width>395</width>
+    <height>108</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <family>Roboto</family>
+    <stylestrategy>PreferAntialias</stylestrategy>
    </font>
   </property>
   <property name="windowTitle">
-   <string>Acc In Folder List</string>
+   <string>Confirmation Dialog</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="AccInFolderListText">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
+   <widget class="QLabel" name="QuestionLabel">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>781</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto</family>
-      <pointsize>12</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="FolderNameLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
+      <x>8</x>
       <y>0</y>
-      <width>121</width>
-      <height>21</height>
+      <width>381</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Roboto</family>
-      <pointsize>12</pointsize>
-      <bold>true</bold>
+      <stylestrategy>PreferDefault</stylestrategy>
      </font>
     </property>
     <property name="text">
-     <string>Folder To List:</string>
+     <string>Are you sure?</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="bListAccounts">
+   <widget class="QPushButton" name="bYes">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>0</y>
-      <width>121</width>
+      <x>120</x>
+      <y>40</y>
+      <width>75</width>
       <height>24</height>
      </rect>
     </property>
@@ -75,24 +55,31 @@
      <font>
       <family>Roboto</family>
       <pointsize>12</pointsize>
-      <bold>true</bold>
+      <stylestrategy>PreferAntialias</stylestrategy>
      </font>
     </property>
     <property name="text">
-     <string>List Accounts</string>
-    </property>
-    <property name="shortcut">
-     <string>Return</string>
+     <string>Yes</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cbFolders">
+   <widget class="QPushButton" name="bNo">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>0</y>
-      <width>531</width>
-      <height>22</height>
+      <x>200</x>
+      <y>40</y>
+      <width>75</width>
+      <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="text">
+     <string>No</string>
     </property>
    </widget>
   </widget>
@@ -101,7 +88,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>802</width>
+     <width>395</width>
      <height>22</height>
     </rect>
    </property>

@@ -1,96 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AccInFolderListWindow</class>
- <widget class="QMainWindow" name="AccInFolderListWindow">
+ <class>AddStyleWindow</class>
+ <widget class="QMainWindow" name="AddStyleWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>358</height>
+    <width>609</width>
+    <height>366</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <family>Roboto</family>
+    <bold>false</bold>
    </font>
   </property>
   <property name="windowTitle">
-   <string>Acc In Folder List</string>
+   <string>Add Style</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="AccInFolderListText">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
+   <widget class="QPushButton" name="bAddStyle">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>781</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto</family>
-      <pointsize>12</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="FolderNameLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto</family>
-      <pointsize>12</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Folder To List:</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bListAccounts">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>0</y>
-      <width>121</width>
+      <x>500</x>
+      <y>300</y>
+      <width>91</width>
       <height>24</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Roboto</family>
-      <pointsize>12</pointsize>
+      <pointsize>9</pointsize>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>List Accounts</string>
+     <string>Add Style</string>
     </property>
     <property name="shortcut">
      <string>Return</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cbFolders">
+   <widget class="QLabel" name="StyleTextLabel">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>0</y>
-      <width>531</width>
+      <x>10</x>
+      <y>10</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Style Text:</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="ptStyleText">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>591</width>
+      <height>251</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="SyleNameLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>300</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Style Name:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="StyleNameText">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>300</y>
+      <width>191</width>
       <height>22</height>
      </rect>
     </property>
@@ -101,7 +109,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>802</width>
+     <width>609</width>
      <height>22</height>
     </rect>
    </property>

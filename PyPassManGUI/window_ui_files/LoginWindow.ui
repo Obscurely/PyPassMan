@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>492</width>
-    <height>118</height>
+    <height>188</height>
    </rect>
   </property>
   <property name="font">
@@ -98,6 +98,32 @@ Account</string>
     </property>
     <property name="shortcut">
      <string>3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bStyleManager">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>80</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>16</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="text">
+     <string>Style Manager</string>
+    </property>
+    <property name="shortcut">
+     <string>4</string>
     </property>
    </widget>
   </widget>

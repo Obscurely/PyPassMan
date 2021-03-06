@@ -22,9 +22,9 @@
    <widget class="QLineEdit" name="FolderNameInput">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>10</y>
-      <width>321</width>
+      <width>281</width>
       <height>22</height>
      </rect>
     </property>
@@ -55,6 +55,26 @@
     </property>
     <property name="shortcut">
      <string>Return</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Name:</string>
     </property>
    </widget>
   </widget>

@@ -1,52 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DeleteAccFolderWindow</class>
- <widget class="QMainWindow" name="DeleteAccFolderWindow">
+ <class>ChangeStyleWindow</class>
+ <widget class="QMainWindow" name="ChangeStyleWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>342</width>
-    <height>108</height>
+    <width>452</width>
+    <height>107</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <family>Roboto</family>
+    <bold>false</bold>
    </font>
   </property>
   <property name="windowTitle">
-   <string>Delete Acc Folder</string>
+   <string>Change Style</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="bDeleteAccFolder">
+   <widget class="QPushButton" name="bChangeStyle">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>160</x>
       <y>40</y>
-      <width>121</width>
+      <width>111</width>
       <height>24</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Roboto</family>
+      <pointsize>9</pointsize>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Delete Acc Folder</string>
+     <string>Change Style</string>
     </property>
     <property name="shortcut">
      <string>Return</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cbFolders">
+   <widget class="QLabel" name="StyleLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>321</width>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Style:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbStyles">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>10</y>
+      <width>371</width>
       <height>22</height>
      </rect>
     </property>
@@ -57,7 +79,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>342</width>
+     <width>452</width>
      <height>22</height>
     </rect>
    </property>
