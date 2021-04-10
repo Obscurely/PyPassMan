@@ -1,5 +1,5 @@
 # PyPassMan - password manager app
-[![Current Version](https://img.shields.io/badge/version-0.1.1-green.svg)](https://github.com/Obscurely/PyPassMan)<br />
+[![Current Version](https://img.shields.io/badge/version-0.2.0-green.svg)](https://github.com/Obscurely/PyPassMan)<br />
 Password Manager created with Python.
 
 ## Table of contents
@@ -25,7 +25,7 @@ This is an open-source cross-platform local password manager (runs by creating e
 
 ## Technologies
 Project is created with:
-* Python 3.9.1
+* Python 3.9.4
 * Qt Designer 6.0.0
 
 ## Program dependencies
