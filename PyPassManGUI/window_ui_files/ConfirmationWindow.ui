@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConfirmationWindow</class>
+ <widget class="QMainWindow" name="ConfirmationWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>395</width>
+    <height>108</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Roboto</family>
+    <stylestrategy>PreferAntialias</stylestrategy>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Confirmation Dialog</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="QuestionLabel">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>0</y>
+      <width>381</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <stylestrategy>PreferDefault</stylestrategy>
+     </font>
+    </property>
+    <property name="text">
+     <string>Are you sure?</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bYes">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>40</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="text">
+     <string>Yes</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bNo">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>40</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>12</pointsize>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>395</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
