@@ -1,4 +1,4 @@
-pywin32==300
+pywin32>=301
 winshell==0.6
 requests==2.25.1
 wget==3.2
